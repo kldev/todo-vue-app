@@ -1,5 +1,4 @@
-import Vue from 'vue';
-import Vuex, { Action, ActionContext, Module, ActionTree, MutationTree, GetterTree } from 'vuex';
+import { ActionContext, Module, ActionTree, MutationTree, GetterTree } from 'vuex';
 import AppRouter from '@/router';
 
 
