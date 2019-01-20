@@ -1,1 +1,1 @@
-export const namesapce = 'AppModule';
+export const namesapce = 'appModule';

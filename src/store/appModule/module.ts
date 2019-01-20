@@ -17,6 +17,10 @@ interface IAppGetters extends GetterTree<IAppState, {}> {
     [getters.getDrawer](state: IAppState): boolean;
 }
 
+const AppState: IAppState = {
+    drawer: false,
+};
+
 const AppMutations: IAppMutations = {
     [mutations.setDrawer](state, payload) {
         state.drawer = payload;
@@ -29,8 +33,9 @@ const AppGetters: IAppGetters = {
     },
 };
 
-export const AppModule: Module<IAppState, {}> = {
+export const appModule: Module<IAppState, {}> = {
     namespaced: true,
+    state: AppState,
     mutations: AppMutations,
     getters: AppGetters,
 };
