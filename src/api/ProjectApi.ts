@@ -12,7 +12,7 @@ class ProjectApi {
 
     }
 
-    public list(): Promise<ProjectModel[]>{
+    public list(): Promise<ProjectModel[]> {
         return new Promise<ProjectModel[]>(
             (resolve) => {
                 resolve(this.projects);
@@ -26,6 +26,8 @@ class ProjectApi {
 
                 project.id = `${this.projects.length + 1}`;
                 this.projects.push(project);
+
+                this.fakeSave();
                 resolve('success');
             },
         );
@@ -36,6 +38,7 @@ class ProjectApi {
             (resolve ) => {
                 this.projects = this.projects.filter( (item) => item.id === id);
 
+                this.fakeSave();
                 resolve('success');
             },
          );
