@@ -1,12 +1,19 @@
 import Vue from 'vue';
 import Vuex, { Action, ActionContext, Module, ActionTree, MutationTree, GetterTree } from 'vuex';
+import AppRouter from '@/router';
 
-// import * as actions from './actions';
+
+import * as actions from './actions';
 import * as getters from './getters';
 import * as mutations from './mutations';
 
 export interface IAppState {
     drawer: boolean;
+}
+
+
+interface IAppActions extends ActionTree<IAppState, {}> {
+    [actions.pushRoute]( context: ActionContext<IAppState, {}>, payload: string ): void;
 }
 
 interface IAppMutations extends MutationTree<IAppState> {
@@ -20,6 +27,13 @@ interface IAppGetters extends GetterTree<IAppState, {}> {
 const AppState: IAppState = {
     drawer: false,
 };
+
+const AppActions: IAppActions = {
+    [actions.pushRoute]({}, payload: string): void {
+        AppRouter.push(payload);
+    },
+};
+
 
 const AppMutations: IAppMutations = {
     [mutations.setDrawer](state, payload) {
@@ -36,6 +50,7 @@ const AppGetters: IAppGetters = {
 export const appModule: Module<IAppState, {}> = {
     namespaced: true,
     state: AppState,
+    actions: AppActions,
     mutations: AppMutations,
     getters: AppGetters,
 };

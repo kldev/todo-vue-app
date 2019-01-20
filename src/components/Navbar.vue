@@ -21,7 +21,7 @@
           <span>{{ $t('navbar.menu') }}</span>
         </v-btn>
         <v-list>
-          <v-list-tile v-for="link in links" :key="link.text" router :to="link.route">
+          <v-list-tile v-for="link in links" :key="link.text" @click.stop="onPushRoute(link.route)">
             <v-list-tile-title>{{ $t(link.text) }}</v-list-tile-title>
           </v-list-tile>
         </v-list>
@@ -48,7 +48,7 @@
         </v-flex>
       </v-layout>
       <v-list>
-        <v-list-tile v-for="link in links" :key="link.text" router :to="link.route">
+        <v-list-tile v-for="link in links" :key="link.text" @click.stop="onPushRoute(link.route)">
           <v-list-tile-action>
             <v-icon class="white--text">{{ link.icon }}</v-icon>
           </v-list-tile-action>
@@ -68,6 +68,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import { namesapce } from '@/store/appModule/namespace';
 import { getDrawer } from '@/store/appModule/getters';
 import { setDrawer } from '@/store/appModule/mutations';
+import { pushRoute } from '@/store/appModule/actions';
  
 interface LinkItem {
   text: string,
@@ -81,8 +82,8 @@ export default class Navbar extends Vue {
     private snackbar: boolean = false;
     private links: LinkItem[] = [
       { icon: 'dashboard', text: 'route.dashboard', route: '/'},
-      { icon: 'folder', text: 'route.my.projects', route: '/'},
-      { icon: 'person', text: 'route.team', route: '/'},
+      { icon: 'folder', text: 'route.my.projects', route: '/projects'},
+      { icon: 'person', text: 'route.team', route: '/team'},
     ];
 
     get drawer(): boolean {
@@ -91,6 +92,10 @@ export default class Navbar extends Vue {
 
     set drawer(value: boolean) {
         this.$store.commit(`${namesapce}/${setDrawer}`, value);
+    }
+
+    private onPushRoute(route: string): void {
+      this.$store.dispatch(`${namesapce}/${pushRoute}`, route);
     }
 
 
