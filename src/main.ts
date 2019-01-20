@@ -11,8 +11,8 @@ import { translation as messages  } from '@/i18n/translation.ts';
 Vue.use(VueI18n);
 
 const i18n = new VueI18n({
-  locale: 'pl',
-  fallbackLocale: 'pl',
+  locale: 'en',
+  fallbackLocale: 'en',
   messages,
 });
 

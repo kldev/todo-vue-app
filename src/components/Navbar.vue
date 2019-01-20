@@ -9,8 +9,8 @@
     <v-toolbar flat app>
       <v-toolbar-side-icon @click="drawer = !drawer" class="grey--text"></v-toolbar-side-icon>
       <v-toolbar-title class="text-uppercase grey--text">
-        <span class="font-weight-light"> {{ $('app.title.todo') }} </span>
-        <span> {{ $('app.title.vue') }} </span>
+        <span class="font-weight-light"> {{ $t('app.title.todo') }} </span>
+        <span> {{ $t('app.title.vue') }} </span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
 
@@ -18,7 +18,7 @@
       <v-menu offset-y>
         <v-btn flat slot="activator" color="grey">
           <v-icon left>expand_more</v-icon>
-          <span>{{ $('navbar.menu') }}</span>
+          <span>{{ $t('navbar.menu') }}</span>
         </v-btn>
         <v-list>
           <v-list-tile v-for="link in links" :key="link.text" router :to="link.route">
@@ -53,7 +53,7 @@
             <v-icon class="white--text">{{ link.icon }}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title class="white--text">{{ link.text }}</v-list-tile-title>
+            <v-list-tile-title class="white--text">{{ $t(link.text) }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -75,6 +75,7 @@ interface LinkItem {
   icon: string,
 }
 
+@Component
 export default class Navbar extends Vue {
 
     private snackbar: boolean = false;
