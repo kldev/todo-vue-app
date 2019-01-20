@@ -1,5 +1,6 @@
 
 import {ProjectModel } from '@/model/ProjectModel';
+import format from 'date-fns/format';
 
 class ProjectApi {
     constructor(private projects: ProjectModel[] = []) {
@@ -10,6 +11,9 @@ class ProjectApi {
             this.projects = JSON.parse(window.localStorage['projects']);
         }
 
+        if (this.projects.length === 0) {
+            this.fakeProjects();
+        }
     }
 
     public list(): Promise<ProjectModel[]> {
@@ -49,6 +53,18 @@ class ProjectApi {
             // tslint:disable-next-line:no-string-literal
             localStorage['projects'] = JSON.stringify(this.projects);
         }
+    }
+
+    private fakeProjects() {
+
+        for (let i = 0; i < 25; i++) {
+            const due = format(new Date(), 'Do MMM YYYY');
+
+            this.projects.push(new ProjectModel(`{i}`, `Project ${i}`, `Person ${i}`, due, `TODO: task ${i}` ));
+        }
+
+        this.fakeSave();
+
     }
 
 }

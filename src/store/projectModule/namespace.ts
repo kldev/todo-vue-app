@@ -1,1 +1,1 @@
-export const namesapce = 'projectModule';
+export const namespace = 'projectModule';

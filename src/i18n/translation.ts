@@ -15,5 +15,7 @@ export const translation: any = {
         'popup.person.name': 'Fullname',
         'validate.field.is.required': 'This field is required',
         'validate.minimum.lenght.is.characters': 'Minimum length is {min} characters',
+        'projects.title': 'Projects',
+        'projects.due.by': 'Due by {due}',
     },
 };
