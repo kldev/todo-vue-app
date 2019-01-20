@@ -8,7 +8,7 @@ class ProjectApi {
         //  tslint:disable-next-line:no-string-literal
         if (window.localStorage && localStorage['projects'] !== undefined) {
             // tslint:disable-next-line:no-string-literal
-            this.projects = JSON.parse(window.localStorage['projects']);
+            this.projects = JSON.parse(localStorage['projects']);
         }
 
         if (this.projects.length === 0) {

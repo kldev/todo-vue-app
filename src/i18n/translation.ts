@@ -17,5 +17,12 @@ export const translation: any = {
         'validate.minimum.lenght.is.characters': 'Minimum length is {min} characters',
         'projects.title': 'Projects',
         'projects.due.by': 'Due by {due}',
+        'dashboard.by.project.name': 'By project name',
+        'dashboard.sort.by.project.name': 'Sort by project name',
+        'dashboard.by.person': 'By Person',
+        'dashboard.sort.by.person': 'Sort by project author',
+        'dashboard.project.title': 'Project title',
+        'dashboard.person': 'Person',
+        'dashboard.due.by': 'Due by',
     },
 };
