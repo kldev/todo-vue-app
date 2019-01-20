@@ -1,4 +1,4 @@
-# todo-spring-web
+# TODO VUE APP
 
 ## Project setup
 ```
