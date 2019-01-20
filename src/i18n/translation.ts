@@ -24,5 +24,6 @@ export const translation: any = {
         'dashboard.project.title': 'Project title',
         'dashboard.person': 'Person',
         'dashboard.due.by': 'Due by',
+        'team.send.message': 'Message',
     },
 };
