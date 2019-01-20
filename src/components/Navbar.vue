@@ -27,6 +27,19 @@
         </v-list>
       </v-menu>
 
+       <v-menu offset-y>
+        <v-btn flat slot="activator" color="grey">
+          <v-icon left>expand_more</v-icon>
+          <span>{{ $t('navbar.language') }}</span>
+        </v-btn>
+
+        <v-list>
+          <v-list-tile v-for="lang in languages" :key="lang.text" @click.stop="onLangChange(lang.value)">
+            <v-list-tile-title>{{ $t(lang.text) }}</v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
+
       <v-btn flat color="grey">
         <span> {{ $t('action.sign.out') }} </span>
         <v-icon right>exit_to_app</v-icon>
@@ -57,6 +70,20 @@
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
+      <v-layout column align-center>
+        <v-flex mx-4>
+        <v-select solo class="white--text" :items="$t('lang.list')"  
+                        v-model="localeKey" 
+                        :label="$t('navbar.language')" 
+                        item-text="label" item-value="key" 
+                        
+                        v-on:change="onLangChange" >
+            </v-select>
+        </v-flex>
+        
+      </v-layout>
+      
+
     </v-navigation-drawer>
 
   </nav>
@@ -76,6 +103,11 @@ interface LinkItem {
   icon: string,
 }
 
+interface LangItem {
+  text: string,
+  value: string,
+}
+
 @Component
 export default class Navbar extends Vue {
 
@@ -85,6 +117,16 @@ export default class Navbar extends Vue {
       { icon: 'folder', text: 'route.my.projects', route: '/projects'},
       { icon: 'person', text: 'route.team', route: '/team'},
     ];
+
+    private localeKey: string = '';
+    private languages: LangItem[] = [
+      { text: 'lang.en', value: 'en' },
+      { text: 'lang.pl', value: 'pl' },
+    ];
+
+    private mounted() {
+       this.localeKey = this.$i18n.locale;
+    }
 
     get drawer(): boolean {
         return this.$store.getters[`${namesapce}/${getDrawer}`] as boolean;
@@ -98,8 +140,13 @@ export default class Navbar extends Vue {
       this.$store.dispatch(`${namesapce}/${pushRoute}`, route);
     }
 
+    private onLangChange(value: string) {
+       this.$i18n.locale = value;
+       this.localeKey = value;
+    }
 
     
 }
 
 </script>
+

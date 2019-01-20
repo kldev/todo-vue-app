@@ -21,7 +21,7 @@
             <v-card-actions>
               <v-btn flat color="grey">
                 <v-icon small left>message</v-icon>
-                <span class="">${{'team.send.message'}}</span>
+                <span class="">{{$t('team.send.message')}}</span>
               </v-btn>
             </v-card-actions>
           </v-card>

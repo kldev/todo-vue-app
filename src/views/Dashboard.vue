@@ -21,7 +21,7 @@
             <v-icon small left>person</v-icon>
             <span class="caption text-lowercase"> {{ $t('dashboard.by.person') }}</span>
           </v-btn>
-          <span> {{ $t('dashboard.by.person') }}</span>
+          <span> {{ $t('dashboard.sort.by.person') }}</span>
         </v-tooltip>
       </v-layout>
       
